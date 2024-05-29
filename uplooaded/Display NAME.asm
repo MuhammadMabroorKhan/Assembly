@@ -1,0 +1,24 @@
+.MODEL SMALL
+   DISPLAY MACRO STRINGS
+        MOV AH,9
+        LEA DX,STRINGS
+        INT 21H
+    ENDM
+.STACK 100H
+.DATA
+ 
+    STR1 DB 0AH,0DH,"     WELCOME... => $"
+    STR2 DB "YOUR NAME $"
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+    
+    DISPLAY STR1
+    DISPLAY STR2
+    
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+END MAIN
+    
